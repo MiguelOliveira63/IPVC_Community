@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="pt">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <title>Realtime Starter</title>
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-inner">
+        <!-- Hambúrguer (mobile) -->
+        <button class="icon-btn hamburger" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+
+        <!-- Perfil -->
+        <div class="nav-profile" id="nav-profile">
+            <span class="avatar" aria-hidden="true"></span>
+            <div class="profile-meta">
+                <span class="label">Conta</span>
+                <button class="profile-button" id="profile-button" aria-label="Abrir conta">
+                    <span id="user-name">Nome Utilizador</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Links de navegação (desktop) -->
+        <div class="nav-links">
+            <a href="#" class="nav-link">Eventos</a>
+            <a href="#" class="nav-link">Calendario</a>
+            <a href="#" class="nav-link">Perfil</a>
+        </div>
+
+        <!-- Busca + ações -->
+        <div class="nav-search">
+            <div class="search-wrap">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="search-ico"><path d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                <input id="global-search" placeholder="Search event" aria-label="Pesquisar" />
+            </div>
+            <button class="icon-btn" aria-label="Filtros">
+                <i class="fa-solid fa-sliders"></i>
+            </button>
+            <button class="icon-btn has-dot" aria-label="Calendário">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="3" stroke="currentColor" stroke-width="2"/><path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                <span class="notif-dot" aria-hidden="true"></span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Menu recolhível no mobile -->
+    <div class="nav-drawer" id="nav-drawer">
+        <a href="#" class="drawer-link">Início</a>
+        <a href="#" class="drawer-link">Itens</a>
+        <a href="#" class="drawer-link">Conta</a>
+        <button id="logout-mobile" class="drawer-link danger">Sair</button>
+    </div>
+</nav>
+
+
+<main>
+
+    <!-- CATEGORIAS DE EVENTOS -->
+    <section class="categories-section">
+        <div class="categories-container">
+            <button class="category-block active">View all</button>
+            <button class="category-block">Music Tours</button>
+            <button class="category-block">Exhibitions</button>
+            <button class="category-block">Parties</button>
+            <button class="category-block">Sports</button>
+            <button class="category-block">Conferences</button>
+            <button class="category-block">Theater</button>
+            <button class="category-block">Comedy</button>
+        </div>
+    </section>
+
+    <section>
+        <h5 class="title">Eventos Futuros</h5>
+        <div class="events-scroll">
+            <!-- Event Card 1 -->
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=600&h=300&fit=crop" alt="Concert">
+                    <div class="event-date">
+                        <span class="date-day">11</span>
+                        <span class="date-month">Jun</span>
+                    </div>
+                    <button class="event-like" aria-label="Favoritar">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </button>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">THE WEEKND</h3>
+                    <div class="event-location">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
+                        <span>Manchester, UK • Etihad Stadium</span>
+                    </div>
+                    <div class="event-footer">
+                        <div class="event-attendees">
+                            <div class="attendee-avatars">
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-count">+95</span>
+                            </div>
+                        </div>
+                        <div class="event-price">
+                            <span class="price-value">$350</span>
+                            <span class="price-unit">/person</span>
+                        </div>
+                    </div>
+                    <button class="event-cta">Read more</button>
+                </div>
+            </div>
+            <!-- Event Card 1 -->
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=600&h=300&fit=crop" alt="Concert">
+                    <div class="event-date">
+                        <span class="date-day">11</span>
+                        <span class="date-month">Jun</span>
+                    </div>
+                    <button class="event-like" aria-label="Favoritar">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </button>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">THE WEEKND</h3>
+                    <div class="event-location">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
+                        <span>Manchester, UK • Etihad Stadium</span>
+                    </div>
+                    <div class="event-footer">
+                        <div class="event-attendees">
+                            <div class="attendee-avatars">
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-count">+95</span>
+                            </div>
+                        </div>
+                        <div class="event-price">
+                            <span class="price-value">$350</span>
+                            <span class="price-unit">/person</span>
+                        </div>
+                    </div>
+                    <button class="event-cta">Read more</button>
+                </div>
+            </div><!-- Event Card 1 -->
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=600&h=300&fit=crop" alt="Concert">
+                    <div class="event-date">
+                        <span class="date-day">11</span>
+                        <span class="date-month">Jun</span>
+                    </div>
+                    <<button class="event-like" aria-label="Favoritar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </button>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">THE WEEKND</h3>
+                    <div class="event-location">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
+                        <span>Manchester, UK • Etihad Stadium</span>
+                    </div>
+                    <div class="event-footer">
+                        <div class="event-attendees">
+                            <div class="attendee-avatars">
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-count">+95</span>
+                            </div>
+                        </div>
+                        <div class="event-price">
+                            <span class="price-value">$350</span>
+                            <span class="price-unit">/person</span>
+                        </div>
+                    </div>
+                    <button class="event-cta">Read more</button>
+                </div>
+            </div><!-- Event Card 1 -->
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=600&h=300&fit=crop" alt="Concert">
+                    <div class="event-date">
+                        <span class="date-day">11</span>
+                        <span class="date-month">Jun</span>
+                    </div>
+                    <button class="event-like" aria-label="Favoritar">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </button>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">THE WEEKND</h3>
+                    <div class="event-location">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
+                        <span>Manchester, UK • Etihad Stadium</span>
+                    </div>
+                    <div class="event-footer">
+                        <div class="event-attendees">
+                            <div class="attendee-avatars">
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-count">+95</span>
+                            </div>
+                        </div>
+                        <div class="event-price">
+                            <span class="price-value">$350</span>
+                            <span class="price-unit">/person</span>
+                        </div>
+                    </div>
+                    <button class="event-cta">Read more</button>
+                </div>
+            </div><!-- Event Card 1 -->
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=600&h=300&fit=crop" alt="Concert">
+                    <div class="event-date">
+                        <span class="date-day">11</span>
+                        <span class="date-month">Jun</span>
+                    </div>
+                    <button class="event-like" aria-label="Favoritar">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </button>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">THE WEEKND</h3>
+                    <div class="event-location">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
+                        <span>Manchester, UK • Etihad Stadium</span>
+                    </div>
+                    <div class="event-footer">
+                        <div class="event-attendees">
+                            <div class="attendee-avatars">
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-count">+95</span>
+                            </div>
+                        </div>
+                        <div class="event-price">
+                            <span class="price-value">$350</span>
+                            <span class="price-unit">/person</span>
+                        </div>
+                    </div>
+                    <button class="event-cta">Read more</button>
+                </div>
+            </div><!-- Event Card 1 -->
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=600&h=300&fit=crop" alt="Concert">
+                    <div class="event-date">
+                        <span class="date-day">11</span>
+                        <span class="date-month">Jun</span>
+                    </div>
+                    <button class="event-like" aria-label="Favoritar">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </button>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">THE WEEKND</h3>
+                    <div class="event-location">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
+                        <span>Manchester, UK • Etihad Stadium</span>
+                    </div>
+                    <div class="event-footer">
+                        <div class="event-attendees">
+                            <div class="attendee-avatars">
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-count">+95</span>
+                            </div>
+                        </div>
+                        <div class="event-price">
+                            <span class="price-value">$350</span>
+                            <span class="price-unit">/person</span>
+                        </div>
+                    </div>
+                    <button class="event-cta">Read more</button>
+                </div>
+            </div>
+            <!-- Event Card 2 -->
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&h=300&fit=crop" alt="Music Festival">
+                    <div class="event-date">
+                        <span class="date-day">25</span>
+                        <span class="date-month">Jul</span>
+                    </div>
+                    <button class="event-like" aria-label="Favoritar">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </button>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">SUMMER MUSIC FEST</h3>
+                    <div class="event-location">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
+                        <span>London, UK • Hyde Park</span>
+                    </div>
+                    <div class="event-footer">
+                        <div class="event-attendees">
+                            <div class="attendee-avatars">
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-count">+120</span>
+                            </div>
+                        </div>
+                        <div class="event-price">
+                            <span class="price-value">$280</span>
+                            <span class="price-unit">/person</span>
+                        </div>
+                    </div>
+                    <button class="event-cta">Read more</button>
+                </div>
+            </div>
+
+            <!-- Event Card 3 -->
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&h=300&fit=crop" alt="Art Exhibition">
+                    <div class="event-date">
+                        <span class="date-day">15</span>
+                        <span class="date-month">Aug</span>
+                    </div>
+                    <button class="event-like active" aria-label="Favoritar">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </button>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">MODERN ART EXPO</h3>
+                    <div class="event-location">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
+                        <span>Paris, FR • Louvre Museum</span>
+                    </div>
+                    <div class="event-footer">
+                        <div class="event-attendees">
+                            <div class="attendee-avatars">
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-count">+85</span>
+                            </div>
+                        </div>
+                        <div class="event-price">
+                            <span class="price-value">$95</span>
+                            <span class="price-unit">/person</span>
+                        </div>
+                    </div>
+                    <button class="event-cta">Read more</button>
+                </div>
+            </div>
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&h=300&fit=crop" alt="Art Exhibition">
+                    <div class="event-date">
+                        <span class="date-day">15</span>
+                        <span class="date-month">Aug</span>
+                    </div>
+                    <button class="event-like active" aria-label="Favoritar">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </button>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">MODERN ART EXPO</h3>
+                    <div class="event-location">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
+                        <span>Paris, FR • Louvre Museum</span>
+                    </div>
+                    <div class="event-footer">
+                        <div class="event-attendees">
+                            <div class="attendee-avatars">
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-count">+85</span>
+                            </div>
+                        </div>
+                        <div class="event-price">
+                            <span class="price-value">$95</span>
+                            <span class="price-unit">/person</span>
+                        </div>
+                    </div>
+                    <button class="event-cta">Read more</button>
+                </div>
+
+            </div>
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&h=300&fit=crop" alt="Art Exhibition">
+                    <div class="event-date">
+                        <span class="date-day">15</span>
+                        <span class="date-month">Aug</span>
+                    </div>
+                    <button class="event-like active" aria-label="Favoritar">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </button>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">MODERN ART EXPO</h3>
+                    <div class="event-location">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
+                        <span>Paris, FR • Louvre Museum</span>
+                    </div>
+                    <div class="event-footer">
+                        <div class="event-attendees">
+                            <div class="attendee-avatars">
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-count">+85</span>
+                            </div>
+                        </div>
+                        <div class="event-price">
+                            <span class="price-value">$95</span>
+                            <span class="price-unit">/person</span>
+                        </div>
+                    </div>
+                    <button class="event-cta">Read more</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section>
+        <h5 class="title">Eventos IPVC</h5>
+        <div class="events-scroll">
+            <!-- Event Card 1 -->
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=600&h=300&fit=crop" alt="Concert">
+                    <div class="event-date">
+                        <span class="date-day">11</span>
+                        <span class="date-month">Jun</span>
+                    </div>
+                    <button class="event-like" aria-label="Favoritar">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </button>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">THE WEEKND</h3>
+                    <div class="event-location">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
+                        <span>Manchester, UK • Etihad Stadium</span>
+                    </div>
+                    <div class="event-footer">
+                        <div class="event-attendees">
+                            <div class="attendee-avatars">
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-count">+95</span>
+                            </div>
+                        </div>
+                        <div class="event-price">
+                            <span class="price-value">$350</span>
+                            <span class="price-unit">/person</span>
+                        </div>
+                    </div>
+                    <button class="event-cta">Read more</button>
+                </div>
+            </div>
+
+            <!-- Event Card 2 -->
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&h=300&fit=crop" alt="Music Festival">
+                    <div class="event-date">
+                        <span class="date-day">25</span>
+                        <span class="date-month">Jul</span>
+                    </div>
+                    <button class="event-like" aria-label="Favoritar">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </button>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">SUMMER MUSIC FEST</h3>
+                    <div class="event-location">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
+                        <span>London, UK • Hyde Park</span>
+                    </div>
+                    <div class="event-footer">
+                        <div class="event-attendees">
+                            <div class="attendee-avatars">
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-count">+120</span>
+                            </div>
+                        </div>
+                        <div class="event-price">
+                            <span class="price-value">$280</span>
+                            <span class="price-unit">/person</span>
+                        </div>
+                    </div>
+                    <button class="event-cta">Read more</button>
+                </div>
+            </div>
+
+            <!-- Event Card 3 -->
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&h=300&fit=crop" alt="Art Exhibition">
+                    <div class="event-date">
+                        <span class="date-day">15</span>
+                        <span class="date-month">Aug</span>
+                    </div>
+                    <button class="event-like active" aria-label="Favoritar">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </button>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">MODERN ART EXPO</h3>
+                    <div class="event-location">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
+                        <span>Paris, FR • Louvre Museum</span>
+                    </div>
+                    <div class="event-footer">
+                        <div class="event-attendees">
+                            <div class="attendee-avatars">
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-count">+85</span>
+                            </div>
+                        </div>
+                        <div class="event-price">
+                            <span class="price-value">$95</span>
+                            <span class="price-unit">/person</span>
+                        </div>
+                    </div>
+                    <button class="event-cta">Read more</button>
+                </div>
+            </div>
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&h=300&fit=crop" alt="Art Exhibition">
+                    <div class="event-date">
+                        <span class="date-day">15</span>
+                        <span class="date-month">Aug</span>
+                    </div>
+                    <button class="event-like active" aria-label="Favoritar">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </button>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">MODERN ART EXPO</h3>
+                    <div class="event-location">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
+                        <span>Paris, FR • Louvre Museum</span>
+                    </div>
+                    <div class="event-footer">
+                        <div class="event-attendees">
+                            <div class="attendee-avatars">
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-count">+85</span>
+                            </div>
+                        </div>
+                        <div class="event-price">
+                            <span class="price-value">$95</span>
+                            <span class="price-unit">/person</span>
+                        </div>
+                    </div>
+                    <button class="event-cta">Read more</button>
+                </div>
+            </div>
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&h=300&fit=crop" alt="Art Exhibition">
+                    <div class="event-date">
+                        <span class="date-day">15</span>
+                        <span class="date-month">Aug</span>
+                    </div>
+                    <button class="event-like active" aria-label="Favoritar">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </button>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">MODERN ART EXPO</h3>
+                    <div class="event-location">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
+                        <span>Paris, FR • Louvre Museum</span>
+                    </div>
+                    <div class="event-footer">
+                        <div class="event-attendees">
+                            <div class="attendee-avatars">
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-sm"></span>
+                                <span class="avatar-count">+85</span>
+                            </div>
+                        </div>
+                        <div class="event-price">
+                            <span class="price-value">$95</span>
+                            <span class="price-unit">/person</span>
+                        </div>
+                    </div>
+                    <button class="event-cta">Read more</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script>
+    // Toggle do menu mobile
+    const navToggle = document.getElementById('nav-toggle');
+    const navDrawer = document.getElementById('nav-drawer');
+
+    if (navToggle && navDrawer) {
+        navToggle.addEventListener('click', () => {
+            const isOpen = navDrawer.classList.contains('open');
+            if (isOpen) {
+                navDrawer.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            } else {
+                navDrawer.classList.add('open');
+                navToggle.setAttribute('aria-expanded', 'true');
+            }
+        });
+    }
+
+    // Sincronizar nome do utilizador
+    (function syncUserNameFromEmail() {
+        const emailEl = document.getElementById('user-email');
+        const nameEl = document.getElementById('user-name');
+        if (!emailEl || !nameEl) return;
+
+        const setName = () => {
+            const email = (emailEl.textContent || '').trim();
+            if (!email) return;
+            const local = email.split('@')[0] || 'Utilizador';
+            const nice = local
+                .replace(/[._-]+/g, ' ')
+                .split(' ')
+                .filter(Boolean)
+                .map(s => s.charAt(0).toUpperCase() + s.slice(1))
+                .join(' ');
+            nameEl.textContent = nice || 'Utilizador';
+        };
+
+        setName();
+        const obs = new MutationObserver(setName);
+        obs.observe(emailEl, { childList: true, characterData: true, subtree: true });
+    })();
+</script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/session.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>
