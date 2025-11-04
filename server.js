@@ -84,17 +84,17 @@ io.use((socket, next) => {
         socket.join(payload.sub); // sala privada do user
         return next();
     } catch {
-        return next(); // prossegue sem sessão
+        return next();
     }
 });
 
-// Socket events (globais, se necessário)
+// Socket events
 io.on('connection', (socket) => {
     console.log('Cliente conectado:', socket.id, 'userId:', socket.userId ?? 'anon');
     socket.on('disconnect', () => console.log('Cliente desconectado:', socket.id));
 });
 
-// Start (usa async/await corretamente)
+// Start
 async function start() {
     try {
         if (!MONGODB_URI) throw new Error('MONGODB_URI em falta no .env');
@@ -102,14 +102,13 @@ async function start() {
 
         await mongoose.connect(MONGODB_URI, {
             serverSelectionTimeoutMS: 8000,
-            dbName: DB_NAME, // força a base de dados pretendida
+            dbName: DB_NAME,
         });
 
         const conn = mongoose.connection;
 
-        // logs de runtime (sem expor password)
+        // logs de runtime
         const safeUri = String(MONGODB_URI)
-            // mascara user:pass em URIs com credenciais
             .replace(/(mongodb(?:\+srv)?:\/\/)([^:@/]+):([^@/]+)@/i, '$1$2:***@');
 
         const topo = conn.client?.topology?.description?.type ?? 'desconhecida';
@@ -119,9 +118,9 @@ async function start() {
 
         console.log('MongoDB ligado');
         console.log('   URI:', safeUri);
-        console.log('   Topologia:', topo);            // ex.: ReplicaSetWithPrimary
+        console.log('   Topologia:', topo);
         console.log('   Servidores:', servers.join(', '));
-        console.log('   Base de dados:', conn.name);   // deve ser o valor de MONGODB_DB
+        console.log('   Base de dados:', conn.name);
 
         await new Promise((resolve) => server.listen(PORT, resolve));
         console.log(`Servidor em http://localhost:${PORT}`);
