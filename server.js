@@ -30,28 +30,32 @@ const MONGODB_URI = process.env.MONGODB_URI;
 const DB_NAME = process.env.MONGODB_DB;
 const PORT = process.env.PORT ?? 3000;
 
-// Socket.IO
+// Socket.IO: cria instância ligada ao servidor HTTP
+// permite CORS com origem dinâmica (ajustar em produção)
 const io = new SocketIOServer(server, { cors: { origin: true, credentials: true } });
-app.locals.io = io; // disponível nas rotas
+app.locals.io = io; // disponibiliza o io nas rotas através de app.locals
 
-// Middlewares
-app.use(morgan('dev'));
-app.use(express.json());
-app.use(cookieParser());
+
+// Middlewares globais
+app.use(morgan('dev')); // registo de requests em modo de desenvolvimento
+app.use(express.json()); // parse JSON do corpo das requests
+app.use(cookieParser()); // popula req.cookies com cookies assinados/não assinados
 app.use(cors({ origin: true, credentials: true })); // AJUSTAR ORIGENS EM PRODUÇÃO
 
-// Rotas de Auth
+// Rotas de autenticação (login, registo, refresh, etc.)
 app.use('/api/auth', authRouter);
 
-// Rotas REST protegidas
+// Rotas REST protegidas: aplica requireAuth antes do router de items
 app.use('/api/items', requireAuth, itemsRouter);
 
-// Healthcheck básico
+// Healthcheck básico para verificar que o servidor está vivo
 app.get('/health', (_req, res) => {
     res.json({ status: 'ok', time: new Date().toISOString() });
 });
 
-// Health do DB (ping + info)
+
+// Health do DB (ping + informação de estado da ligação)
+// retorna estado da ligação Mongoose e resultado do ping admin()
 app.get('/health/db', async (_req, res) => {
     const conn = mongoose.connection;
     const stateNames = ['desconectado', 'conectado', 'conectando', 'desconectando'];
@@ -70,10 +74,11 @@ app.get('/health/db', async (_req, res) => {
     });
 });
 
-// Frontend estático
+// Servir frontend estático a partir da pasta client
 app.use(express.static(path.join(__dirname, 'client')));
 
-// Auth no Socket.IO: coloca o socket na sala do utilizador se houver cookie JWT
+// Autenticação no Socket.IO:
+// verifica cookie JWT no handshake, extrai userId e coloca o socket na sala do utilizador
 io.use((socket, next) => {
     try {
         const raw = socket.handshake.headers?.cookie || '';
@@ -88,7 +93,7 @@ io.use((socket, next) => {
     }
 });
 
-// Socket events
+// Eventos de Socket.IO: logging básico de conexões/desconexões
 io.on('connection', (socket) => {
     console.log('Cliente conectado:', socket.id, 'userId:', socket.userId ?? 'anon');
     socket.on('disconnect', () => console.log('Cliente desconectado:', socket.id));
@@ -100,6 +105,7 @@ async function start() {
         if (!MONGODB_URI) throw new Error('MONGODB_URI em falta no .env');
         if (!DB_NAME) throw new Error('MONGODB_DB em falta no .env (ex.: ipvc_com)');
 
+        // conecta ao MongoDB com timeout de selecção de servidor
         await mongoose.connect(MONGODB_URI, {
             serverSelectionTimeoutMS: 8000,
             dbName: DB_NAME,
@@ -111,6 +117,7 @@ async function start() {
         const safeUri = String(MONGODB_URI)
             .replace(/(mongodb(?:\+srv)?:\/\/)([^:@/]+):([^@/]+)@/i, '$1$2:***@');
 
+        // tenta obter topologia e lista de servidores do cliente Mongo
         const topo = conn.client?.topology?.description?.type ?? 'desconhecida';
         const servers = conn.client?.topology?.description?.servers
             ? Object.keys(conn.client.topology.description.servers)
@@ -122,6 +129,7 @@ async function start() {
         console.log('   Servidores:', servers.join(', '));
         console.log('   Base de dados:', conn.name);
 
+        // inicia o servidor HTTP
         await new Promise((resolve) => server.listen(PORT, resolve));
         console.log(`Servidor em http://localhost:${PORT}`);
     } catch (err) {
