@@ -1,6 +1,17 @@
-// client/session.js
-const emailEl = document.getElementById('user-email');
+const emailEl = document.getElementById('user-email');   // se existir noutras páginas
+const userNameEl = document.getElementById('user-name'); // NAVBAR
 const logoutBtn = document.getElementById('logout');
+
+function formatNameFromEmail(email) {
+    if (!email) return 'Utilizador';
+    const local = email.split('@')[0] || 'Utilizador';
+    return local
+        .replace(/[._-]+/g, ' ')
+        .split(' ')
+        .filter(Boolean)
+        .map(s => s.charAt(0).toUpperCase() + s.slice(1))
+        .join(' ');
+}
 
 async function ensureSession() {
     try {
@@ -12,8 +23,27 @@ async function ensureSession() {
             }
             return null;
         }
+
         const me = await res.json();
-        if (emailEl) emailEl.textContent = me.email;
+
+        // mostra email
+        if (emailEl && me.email) {
+            emailEl.textContent = me.email;
+        }
+
+        // mostra nome na NAVBAR
+        if (userNameEl) {
+            if (me.name) {
+                // se o backend já devolver "name"
+                userNameEl.textContent = me.name;
+            } else if (me.email) {
+                // senão, gera nome bonito a partir do email
+                userNameEl.textContent = formatNameFromEmail(me.email);
+            } else {
+                userNameEl.textContent = 'Utilizador';
+            }
+        }
+
         return me;
     } catch (e) {
         console.error('Falha ao obter sessão:', e);
@@ -29,7 +59,6 @@ if (logoutBtn) {
                 method: 'POST',
                 credentials: 'include'
             });
-            // mesmo que falhe, força redirect para limpar UI
             if (!res.ok && res.status !== 204) {
                 console.warn('Logout não retornou 204:', res.status);
             }
@@ -40,5 +69,12 @@ if (logoutBtn) {
         }
     });
 }
+
+// CTA dos eventos
+document.querySelectorAll('.event-cta').forEach(btn => {
+    btn.addEventListener('click', () => {
+        window.location.href = '/item.html';
+    });
+});
 
 ensureSession();

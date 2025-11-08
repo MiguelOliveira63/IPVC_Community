@@ -1,3 +1,5 @@
+/* index.html */
+
 :root {
     --bg:#121212;
     --nav: #191919;
@@ -283,6 +285,12 @@ main > section > h5 {
     background: #3a4760;
 }
 
+.events-empty {
+    padding: 1rem 2rem;
+    color: var(--muted);
+    font-size: .9rem;
+}
+
 .event-card {
     flex: 0 0 560px;
     background: var(--card);
@@ -374,11 +382,38 @@ main > section > h5 {
 }
 
 .event-title {
-    margin: 0 0 .75rem 0;
+    margin: 0 0 .75rem .5rem;
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--text-black);
     letter-spacing: -0.02em;
+    word-spacing: 0.1em;
+}
+
+.event-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+}
+
+.event-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .25rem;
+    justify-content: flex-end;
+    margin-right: .5rem;
+}
+
+.event-category-pill {
+    padding: .15rem .6rem;
+    border-radius: 5px;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
+    color: var(--text-white);
+    font-size: 1rem;
+    font-weight: 400;
+    white-space: nowrap;
 }
 
 .event-location {
@@ -388,6 +423,7 @@ main > section > h5 {
     color: var(--muted);
     font-size: .875rem;
     margin-bottom: 1rem;
+    margin-left: .5rem;
 }
 
 .event-location svg {
@@ -406,6 +442,7 @@ main > section > h5 {
     display: flex;
     align-items: center;
     gap: .25rem;
+    margin-left: .5rem;
 }
 
 .avatar-sm {
@@ -438,6 +475,7 @@ main > section > h5 {
 
 .event-price {
     text-align: right;
+    margin-right: .5rem;
 }
 
 .price-value {
@@ -539,6 +577,7 @@ main > section > h5 {
     .categories-section{
         justify-self: normal;
     }
+
     .hamburger {
         display: inline-flex;
         grid-column: 2;
@@ -606,6 +645,11 @@ main > section > h5 {
         font-size: 1.25rem;
     }
 
+    .event-category-pill {
+        font-size: .8rem;
+        padding: .1rem .45rem;
+    }
+
     .price-value {
         font-size: 1.25rem;
     }
@@ -648,9 +692,9 @@ main > section > h5 {
 
     .avatar-sm,
     .avatar-count {
-        width: 26px;
-        height: 26px;
-        margin-left: -10px;
+        width: 32px;
+        height: 32px;
+        margin-left: -15spx;
     }
 
     .event-cta {

@@ -1,0 +1,409 @@
+:root {
+    --bg: #121212;
+    --nav: #191919;
+    --card: #ffffff;
+    --text-white: #fff;
+    --text-black: #000;
+    --fg: #e9eef4;
+    --muted: #565657;
+    --acc: #e47a38;
+    --ok: #11c46a;
+    --danger: #ff5d5d;
+    --purple: #7c3aed;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Clash Display', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background: var(--acc);
+    color: var(--text-white);
+    overflow: hidden;
+}
+
+.event-detail-container {
+    width: 100%;
+    height: 100vh;
+    background: var(--acc);
+    display: flex;
+    flex-direction: column;
+
+}
+
+/* Header com imagem - Mobile */
+.event-header {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.back-btn,
+.favorite-btn {
+    position: absolute;
+    top: 20px;
+    width: 44px;
+    height: 44px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 10;
+}
+
+.back-btn {
+    left: 20px;
+}
+
+.favorite-btn {
+    right: 20px;
+}
+
+.back-btn:hover,
+.favorite-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.05);
+}
+
+/* Conteúdo - Mobile */
+.event-detail-content {
+    background: #000;
+    border-radius: 32px 32px 0 0;
+    margin-top: -30px;
+    position: relative;
+    padding: 28px 24px 140px;
+    z-index: 5;
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* Artista */
+.event-artist {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+    gap: 12px;
+}
+
+.artist-name {
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: var(--text-white);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+.event-category {
+    display: inline-block;
+    padding: 8px 16px;
+    background: var(--bg);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: var(--text-white);
+    font-weight: 400;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Tour name */
+.tour-name {
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-bottom: 24px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+}
+
+/* Info Grid */
+.event-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 80px;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.info-label {
+    font-size: 0.875rem;
+    color: var(--muted);
+    font-weight: 400;
+    margin-bottom: 2px;
+}
+
+.info-value {
+    font-size: 1rem;
+    color: var(--text-white);
+    font-weight: 600;
+}
+
+.info-time {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 400;
+}
+
+.rate-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.info-rating {
+    font-size: 2.25rem;
+    color: var(--text-white);
+    font-weight: 700;
+    line-height: 1;
+    margin-top: 4px;
+}
+
+/* About section */
+.about-section {
+    margin-bottom: 32px;
+}
+
+.section-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-white);
+    margin-bottom: 12px;
+}
+
+.about-text {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.7;
+    font-weight: 400;
+}
+
+.read-more {
+    color: var(--acc);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+/* CTA Button - Mobile */
+.buy-ticket-btn {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 24px;
+    background: var(--acc);
+    color: var(--text-black);
+    border: none;
+    font-size: 1.15rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: inherit;
+    z-index: 100;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.buy-ticket-btn:hover {
+    background: #d66d2f;
+}
+
+.buy-ticket-btn:active {
+    transform: scale(0.98);
+}
+
+/* DESKTOP - Split Screen Layout */
+@media (min-width: 1024px) {
+    body {
+        background: #000;
+    }
+
+    .event-detail-container {
+        flex-direction: row;
+        overflow: hidden;
+    }
+
+    /* Imagem ocupa 50% da tela */
+    .event-header {
+        width: 50%;
+        height: 100vh;
+        border-radius: 0;
+        flex-shrink: 0;
+    }
+
+    .back-btn,
+    .favorite-btn {
+        top: 32px;
+        width: 48px;
+        height: 48px;
+    }
+
+    .back-btn {
+        left: 32px;
+    }
+
+    .favorite-btn {
+        right: 32px;
+    }
+
+    /* Conteúdo ocupa os outros 50% */
+    .event-detail-content {
+        width: 50%;
+        height: 100vh;
+        margin-top: 0;
+        border-radius: 0;
+        padding: 64px 80px 180px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .event-detail-content::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .event-detail-content::-webkit-scrollbar-track {
+        background: #1a1a1a;
+    }
+
+    .event-detail-content::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 4px;
+    }
+
+    .event-detail-content::-webkit-scrollbar-thumb:hover {
+        background: #444;
+    }
+
+    .artist-name {
+        font-size: 4rem;
+        letter-spacing: -0.03em;
+    }
+
+    .event-category {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+
+    .tour-name {
+        font-size: 1.1rem;
+        margin-bottom: 32px;
+    }
+
+    .event-info-grid {
+        grid-template-columns: 1fr 1fr 120px;
+        gap: 32px;
+        margin-bottom: 40px;
+        padding-bottom: 32px;
+    }
+
+    .info-label {
+        font-size: 1rem;
+    }
+
+    .info-value {
+        font-size: 1.15rem;
+    }
+
+    .info-time {
+        font-size: 1rem;
+    }
+
+    .info-rating {
+        font-size: 3rem;
+    }
+
+    .section-title {
+        font-size: 1.4rem;
+        margin-bottom: 16px;
+    }
+
+    .about-text {
+        font-size: 1.05rem;
+        line-height: 1.8;
+    }
+
+    /* Botão fixo no lado direito */
+    .buy-ticket-btn {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        right: 0;
+        width: 50%;
+        padding: 32px;
+        font-size: 1.75rem;
+        border-radius: 0;
+    }
+}
+
+/* Extra large screens */
+@media (min-width: 1440px) {
+    .event-detail-content {
+        padding: 80px 120px 200px;
+    }
+
+    .artist-name {
+        font-size: 4.5rem;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 380px) {
+    .artist-name {
+        font-size: 1.85rem;
+    }
+
+    .event-info-grid {
+        grid-template-columns: 1fr 1fr 70px;
+        gap: 12px;
+    }
+
+    .info-rating {
+        font-size: 1.85rem;
+    }
+
+    .event-detail-content {
+        padding: 24px 20px 130px;
+    }
+
+    .buy-ticket-btn {
+        font-size: 1rem;
+        padding: 20px;
+    }
+}

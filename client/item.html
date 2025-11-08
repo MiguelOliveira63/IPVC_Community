@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/item.css">
+    <title>Event Details</title>
+</head>
+<body>
+<div class="event-detail-container">
+    <!-- Header com imagem -->
+    <div class="event-header">
+        <button class="back-btn" onclick="window.history.back()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+        </button>
+        <button class="favorite-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+        </button>
+        <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1600&q=80" alt="Beyoncé Concert" class="hero-image">
+    </div>
+
+    <!-- Conteúdo -->
+    <div class="event-detail-content">
+        <div>
+            <!-- Artista e categoria -->
+            <div class="event-artist">
+                <h1 class="artist-name">BEYONCÉ</h1>
+                <span class="event-category">Outdoor</span>
+            </div>
+
+            <!-- Tour name -->
+            <p class="tour-name">THE RENAISSANCE WORLD TOUR</p>
+
+            <!-- Info grid -->
+            <div class="event-info-grid">
+                <div class="info-item">
+                    <span class="info-label">Date:</span>
+                    <span class="info-value">Friday, Jun 13</span>
+                    <span class="info-time">6:00 PM</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Location:</span>
+                    <span class="info-value">Paris</span>
+                    <span class="info-time">Stade De France</span>
+                </div>
+                <div class="info-item rate-item">
+                    <span class="info-label">Rate:</span>
+                    <span class="info-rating">4.8</span>
+                </div>
+            </div>
+
+            <!-- About section -->
+            <div class="about-section">
+                <h2 class="section-title">About event</h2>
+                <p class="about-text">
+                    The Renaissance World Tour is the ninth concert tour by American singer-songwriter Beyoncé. It was announced on February 1, 2023, in support of her seventh studio album Renaissance. The tour showcases a spectacular blend of music, visual artistry, and cultural celebration, bringing together fans from around the world for an unforgettable experience.
+                    <a href="#" class="read-more">Read more</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Button -->
+    <button class="buy-ticket-btn">
+        Buy ticket – $470
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+    </button>
+</div>
+</body>
+</html>

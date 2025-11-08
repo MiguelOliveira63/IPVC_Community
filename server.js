@@ -14,6 +14,8 @@ import { fileURLToPath } from 'url';
 
 import itemsRouter from './routes/items.js';
 import authRouter from './routes/auth.js';
+import categoriesRouter from './routes/categories.js';
+import eventosRouter from './routes/eventos.js';
 import { requireAuth } from './middleware/auth.js';
 
 dotenv.config();
@@ -44,6 +46,11 @@ app.use(cors({ origin: true, credentials: true })); // AJUSTAR ORIGENS EM PRODU�
 
 // Rotas de autenticação (login, registo, refresh, etc.)
 app.use('/api/auth', authRouter);
+
+// Rotas de categorias
+app.use('/api/categorias', requireAuth, categoriesRouter);
+
+app.use('/api/eventos', requireAuth, eventosRouter);
 
 // Rotas REST protegidas: aplica requireAuth antes do router de items
 app.use('/api/items', requireAuth, itemsRouter);
