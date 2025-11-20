@@ -5,11 +5,12 @@
     --text-white: #fff;
     --text-black: #000;
     --fg: #e9eef4;
-    --muted: #565657;
-    --acc: #e47a38;
+    --muted: #b8b8b8;
+    --acc: #ff9100;
     --ok: #11c46a;
     --danger: #ff5d5d;
     --purple: #7c3aed;
+    --cta-height: 88px;
 }
 
 * {
@@ -38,7 +39,6 @@ body {
 
 }
 
-/* Header com imagem - Mobile */
 .event-header {
     position: relative;
     width: 100%;
@@ -59,8 +59,7 @@ body {
     top: 20px;
     width: 44px;
     height: 44px;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(10px);
+    background: transparent;
     border: none;
     border-radius: 12px;
     color: white;
@@ -89,16 +88,17 @@ body {
 /* Conteúdo - Mobile */
 .event-detail-content {
     background: #000;
-    border-radius: 32px 32px 0 0;
+    border-radius: 32px 32px 24px 24px;
     margin-top: -30px;
     position: relative;
-    padding: 28px 24px 140px;
+    padding: 28px 24px 24px;
     z-index: 5;
-    flex: 1;
+    flex: 0 0 auto; /* deixa de “esticar” até ao fim */
+    height: calc(100vh - 300px - var(--cta-height) + 30px);
+    /* 100vh - header(300) - botão + overlap de 30px */
     overflow-y: auto;
 }
 
-/* Artista */
 .event-artist {
     display: flex;
     justify-content: space-between;
@@ -128,7 +128,6 @@ body {
     flex-shrink: 0;
 }
 
-/* Tour name */
 .tour-name {
     font-size: 0.95rem;
     color: var(--muted);
@@ -137,7 +136,6 @@ body {
     letter-spacing: 0.02em;
 }
 
-/* Info Grid */
 .event-info-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 80px;
@@ -186,7 +184,6 @@ body {
     margin-top: 4px;
 }
 
-/* About section */
 .about-section {
     margin-bottom: 32px;
 }
@@ -215,18 +212,18 @@ body {
     text-decoration: underline;
 }
 
-/* CTA Button - Mobile */
 .buy-ticket-btn {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
     width: 100%;
-    padding: 24px;
+    height: var(--cta-height);
+    padding: 0 24px;
     background: var(--acc);
-    color: var(--text-black);
+    color: var(--text-white);
     border: none;
-    font-size: 1.15rem;
+    font-size: 1.50rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
@@ -236,11 +233,10 @@ body {
     gap: 10px;
     font-family: inherit;
     z-index: 100;
-    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .buy-ticket-btn:hover {
-    background: #d66d2f;
+    background: var(--acc);
 }
 
 .buy-ticket-btn:active {
@@ -281,13 +277,12 @@ body {
         right: 32px;
     }
 
-    /* Conteúdo ocupa os outros 50% */
     .event-detail-content {
         width: 50%;
-        height: 100vh;
+        height: calc(100vh - var(--cta-height)); /* pára acima do botão */
         margin-top: 0;
-        border-radius: 0;
-        padding: 64px 80px 180px;
+        border-radius: 0 0 24px 24px;
+        padding: 64px 80px 64px;
         overflow-y: auto;
         display: flex;
         flex-direction: column;
@@ -366,7 +361,8 @@ body {
         left: 50%;
         right: 0;
         width: 50%;
-        padding: 32px;
+        height: var(--cta-height);
+        padding: 0 32px;
         font-size: 1.75rem;
         border-radius: 0;
     }
