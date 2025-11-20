@@ -37,7 +37,7 @@ async function ensureSession() {
                 // se o backend já devolver "name"
                 userNameEl.textContent = me.name;
             } else if (me.email) {
-                // senão, gera nome bonito a partir do email
+                // senão, gera bonito a partir do email
                 userNameEl.textContent = formatNameFromEmail(me.email);
             } else {
                 userNameEl.textContent = 'Utilizador';
